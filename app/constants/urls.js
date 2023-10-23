@@ -1,23 +1,60 @@
-export const APPS = {
-  HOME: 'https://realdevsquad.com/',
-  WELCOME: 'https://welcome.realdevsquad.com/',
-  EVENTS: 'https://realdevsquad.com/events.html/',
-  MEMBERS: 'https://members.realdevsquad.com/',
-  CRYPTO: 'https://crypto.realdevsquad.com/',
-  STATUS: 'https://status.realdevsquad.com/',
-  PROFILE: 'https://my.realdevsquad.com/',
+import ENV from 'website-www/config/environment';
+
+const SCHEME = 'https://';
+const DEVELOPMENT_SCHEME = 'http://';
+const DOMAIN = 'realdevsquad.com';
+const DEVELOPMENT_DOMAIN = 'localhost:3000';
+
+const APP_URLS = {
+  production: {
+    HOME: `${SCHEME}beta.${DOMAIN}`,
+    WELCOME: `${SCHEME}welcome.${DOMAIN}`,
+    EVENTS: `${SCHEME}${DOMAIN}/events`,
+    MEMBERS: `${SCHEME}members.${DOMAIN}`,
+    STATUS: `${SCHEME}status.${DOMAIN}`,
+    PROFILE: `${SCHEME}my.${DOMAIN}`,
+    API_BACKEND: `${SCHEME}api.${DOMAIN}`,
+  },
+  staging: {
+    HOME: `${SCHEME}beta.${DOMAIN}`,
+    WELCOME: `${SCHEME}staging-welcome.${DOMAIN}`,
+    EVENTS: `${SCHEME}staging-www.${DOMAIN}/events`,
+    MEMBERS: `${SCHEME}staging-members.${DOMAIN}`,
+    STATUS: `${SCHEME}staging-status.${DOMAIN}`,
+    PROFILE: `${SCHEME}staging-my.${DOMAIN}`,
+    API_BACKEND: `${SCHEME}staging-api.${DOMAIN}`,
+  },
+  development: {
+    HOME: `${SCHEME}beta.${DOMAIN}`,
+    WELCOME: `${SCHEME}staging-welcome.${DOMAIN}`,
+    EVENTS: `${SCHEME}staging-www.${DOMAIN}/events`,
+    MEMBERS: `${SCHEME}staging-members.${DOMAIN}`,
+    STATUS: `${SCHEME}staging-status.${DOMAIN}`,
+    PROFILE: `${SCHEME}staging-my.${DOMAIN}`,
+    API_BACKEND: `${DEVELOPMENT_SCHEME}${DEVELOPMENT_DOMAIN}`,
+  },
+  test: {
+    HOME: `${SCHEME}${DOMAIN}`,
+    WELCOME: `${SCHEME}welcome.${DOMAIN}`,
+    EVENTS: `${SCHEME}${DOMAIN}/events`,
+    MEMBERS: `${SCHEME}members.${DOMAIN}`,
+    STATUS: `${SCHEME}status.${DOMAIN}`,
+    PROFILE: `${SCHEME}my.${DOMAIN}`,
+    API_BACKEND: `${SCHEME}staging-api.${DOMAIN}`,
+  },
 };
 
+export const APPS = { ...APP_URLS[ENV.environment], LIVE: 'live' };
+
 export const ABOUT = {
-  FAQ: 'https://welcome.realdevsquad.com/faq.html',
+  FAQ: `${APPS.WELCOME}/faq.html`,
   REPOSITORY: 'https://github.com/Real-Dev-Squad/website-www',
   VIDEO: 'https://www.youtube.com/embed/8UPjK1wLnTk?controls=0',
 };
 
 export const AUTH = {
-  SIGN_IN:
-    'https://github.com/login/oauth/authorize?client_id=23c78f66ab7964e5ef97',
-  SIGN_UP: 'https://my.realdevsquad.com/signup',
+  SIGN_IN: `${APPS.API_BACKEND}/auth/github/login`,
+  SIGN_UP: `${APPS.PROFILE}/new-signup`,
 };
 
 export const SOCIALS = {

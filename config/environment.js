@@ -17,9 +17,18 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+    fastboot: {
+      hostWhitelist: [/^localhost:\d+$/, 'dev.realdevsquad.com'],
+    },
   };
 
-  ENV.BASE_API_URL = 'https://api.realdevsquad.com';
+  if (environment === 'production') {
+    ENV.fastboot.hostWhitelist = ['realdevsquad.com'];
+  }
+
+  if (environment === 'staging') {
+    ENV.fastboot.hostWhitelist = ['beta.realdevsquad.com'];
+  }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -32,17 +41,12 @@ module.exports = function (environment) {
   if (environment === 'test') {
     // Testem prefers this...
     ENV.locationType = 'none';
-
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
-  }
-
-  if (environment === 'production') {
-    // here you can enable a production-specific feature
   }
 
   return ENV;

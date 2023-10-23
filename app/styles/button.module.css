@@ -27,3 +27,24 @@
   cursor: not-allowed;
   opacity: 60%;
 }
+
+.btn-pink {
+  background-color: var(--color-pink);
+}
+
+.btn--sm {
+  width: 8rem;
+}
+
+.btn-generateUsername {
+  position: absolute;
+  top: 1rem;
+  right: 0;
+}
+
+.btn-chaincode {
+  background-color: var(--color-navyblue);
+  color: var(--color-white);
+  transition: all 0.5s ease;
+  width: 14rem;
+}

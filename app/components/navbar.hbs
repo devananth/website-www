@@ -44,15 +44,20 @@
         href={{this.MEMBERS_URL}}
       >Members</a></li>
     <li><a
-        data-test-crypto
-        class='nav__element'
-        href={{this.CRYPTO_URL}}
-      >Crypto</a></li>
-    <li><a
         data-test-status
         class='nav__element'
         href={{this.STATUS_URL}}
       >Status</a></li>
+    {{#if this.isDev}}
+      <li>
+        {{!-- TODO - remove query for dev when it goes to production --}}
+        <LinkTo
+          @route={{this.LIVE_URL}}
+          @query={{hash dev='true'}}
+          class='nav__element'
+        >Live</LinkTo>
+      </li>
+    {{/if}}
   </ul>
 
   <div class='nav__login'>
