@@ -29,6 +29,7 @@
 @import 'intro.module.css';
 @import 'onboarding-card.module.css';
 @import 'logs-page.module.css';
+@import 'events.module.css';
 
 * {
   margin: 0px;
